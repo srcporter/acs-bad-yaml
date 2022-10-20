@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubi
+  template:
+    metadata:
+      labels:
+        app: ubi
+    spec:
+      containers:
+      - name: ubi
+        image: redhat/ubi8
+        command: [ "/bin/bash", "-c", "--" ]
+        args: [ "while true; do sleep 30; done;" ]
+        securityContext:
+          privileged: true
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
