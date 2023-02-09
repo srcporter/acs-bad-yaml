@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubi-log4shell
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubi-log4shell
+  template:
+    metadata:
+      labels:
+        app: ubi-log4shell
+    spec:
+      containers:
+      - name: log4shell
+        image: quay.io/rhacs-misc/log4shell:1.0
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
