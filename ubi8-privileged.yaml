@@ -2,16 +2,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ubi
+  name: ubi-privileged
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ubi
+      app: ubi-privileged
   template:
     metadata:
       labels:
-        app: ubi
+        app: ubi-privileged
     spec:
       containers:
       - name: ubi

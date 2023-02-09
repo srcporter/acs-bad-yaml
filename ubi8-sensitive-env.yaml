@@ -2,16 +2,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ubi
+  name: ubi-sensitive
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ubi
+      app: ubi-sensitive
   template:
     metadata:
       labels:
-        app: ubi
+        app: ubi-sensitive
     spec:
       containers:
       - name: ubi

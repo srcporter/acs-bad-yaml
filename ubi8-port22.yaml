@@ -8,23 +8,23 @@ spec:
   ports:
     - port: 22
   selector:
-    app: ubi
+    app: ubi-port22
   type: LoadBalancer
 ---
 apiVersion: apps/v1 
 kind: Deployment
 metadata:
-  name: ubi
+  name: ubi-port22
   labels:
-    app: ubi
+    app: ubi-port22
 spec:
   selector:
     matchLabels:
-      app: ubi
+      app: ubi-port22
   template:
     metadata:
       labels:
-        app: ubi
+        app: ubi-port22
     spec:
       containers:
       - name: ubi
