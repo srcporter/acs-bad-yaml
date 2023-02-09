@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubi-seccomp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubi-seccomp
+  template:
+    metadata:
+      labels:
+        app: ubi-seccomp
+    spec:
+      containers:
+      - name: ubi
+        image: redhat/ubi8
+        command: [ "/bin/bash", "-c", "--" ]
+        args: [ "while true; do sleep 30; done;" ]
+        securityContext:
+          seccompProfile:
+            type: Unconfined
+          privileged: true
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
