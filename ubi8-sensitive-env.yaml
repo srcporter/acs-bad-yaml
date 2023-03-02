@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: ubi
-        image: redhat/ubi8
+        image: redhat/ubi8:8.7-1037
         command: [ "/bin/bash", "-c", "--" ]
         args: [ "while true; do sleep 30; done;" ]
         securityContext:
